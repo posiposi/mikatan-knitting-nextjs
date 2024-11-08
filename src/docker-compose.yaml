@@ -1,0 +1,30 @@
+services:
+  app:
+    build:
+      context: .
+    tty: true
+    volumes:
+      - ./:/app
+    environment:
+      - WATCHPACK_POLLING=true
+    command: sh -c "npm run dev"
+    ports:
+      - "3000:3000"
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - app_network
+volumes:
+  mysql_data:
+networks:
+  app_network:
