@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:prod": "env-cmd -f .env.production prisma migrate deploy"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^0.10.4",
     "@prisma/client": "^6.2.1",
     "next": "15.0.3",
     "react": "19.0.0-rc-66855b96-20241106",
@@ -18,6 +21,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "env-cmd": "^10.1.0",
     "eslint": "^8",
     "eslint-config-next": "15.0.3",
     "prisma": "^6.2.1",
