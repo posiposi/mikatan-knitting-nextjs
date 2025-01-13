@@ -1,0 +1,13 @@
+openapi: 3.1.0
+info:
+  title: みかたんにってぃんぐAPI
+  version: "1.0"
+  description: アプリケーションのAPI仕様書です
+  contact:
+    name: Daichi Sugiyama
+paths:
+  /items:
+    $ref: "paths/item/items.yaml"
+tags:
+  - name: items
+    description: 商品に関するAPI群
