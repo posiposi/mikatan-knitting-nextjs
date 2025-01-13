@@ -21,6 +21,8 @@ model User {
   created_at DateTime  @default(now())
   updated_at DateTime?
 
+  items      Item[]
+
   @@map("users")
 }
 
@@ -33,6 +35,8 @@ model Item {
   purchased_at DateTime?
   created_at   DateTime  @default(now())
   updated_at   DateTime?
+
+  Purchaser     User?    @relation(fields: [purchaser_id], references: [id])
 
   @@map("items")
 }
