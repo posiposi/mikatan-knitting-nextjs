@@ -23,3 +23,16 @@ model User {
 
   @@map("users")
 }
+
+model Item {
+  id           String    @id @default(uuid()) @db.Char(36)
+  item_name    String    @db.VarChar(255)
+  stock        Boolean   @default(true)
+  purchaser_id String?   @db.Char(36)
+  description  String?   @db.VarChar(255)
+  purchased_at DateTime?
+  created_at   DateTime  @default(now())
+  updated_at   DateTime?
+
+  @@map("items")
+}
